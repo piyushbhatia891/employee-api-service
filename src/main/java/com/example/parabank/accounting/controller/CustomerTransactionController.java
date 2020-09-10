@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.parabank.accounting.model.Transaction;
-import com.example.parabank.accounting.model.Transactions;
 import com.example.parabank.accounting.service.CustomerTransactionService;
 
 @RestController
@@ -20,8 +19,7 @@ public class CustomerTransactionController {
 	private CustomerTransactionService customerTransactionService;
 	@GetMapping("/{customerId}/transactions")
 	public List<Transaction> getTransactionsForAUser(@PathVariable("customerId")String customerId) {
-		Transactions transactions= customerTransactionService.getTransactionsForAUser(Integer.parseInt(customerId));
-		return transactions.getTransactions();
+		return customerTransactionService.getTransactionsForAUser(Integer.parseInt(customerId));
 	}
 
 }
